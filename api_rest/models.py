@@ -4,7 +4,7 @@ class Ability(models.Model):
 
     ability_source = models.CharField(max_length=50, default='',)
     ability_execution_type = models.TextChoices('Ação', 'Ação Bonus', 'Reação', 'Ação Livre', 'Passiva', 'Mais que uma Ação')
-    ability_name = models.CharField(max_length=50, default='')
+    ability_name = models.CharField(primary_key=True, max_length=50, default='')
     ability_cost = models.IntegerField(default=0)
     ability_descriptors = models.CharField(max_length=50, default='') # Procurar maneiras de criar uma lista de opções onde seja possível adicionar mais de uma opção à variável
     ability_description = models.TextField(default='')
