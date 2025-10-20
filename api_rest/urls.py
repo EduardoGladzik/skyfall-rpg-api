@@ -4,6 +4,6 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.get_abilities, name='habilidades'),
- #  path('/habilidade:<str:ability_name>', views.get_ability, name='habilidade'),
+    path('habilidades', views.get_abilities),
+    path('habilidade:<str:ability_name>', views.get_ability),
 ]
