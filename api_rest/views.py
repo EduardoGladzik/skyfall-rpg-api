@@ -17,3 +17,13 @@ def get_abilities(request):
         serializer = AbilitySerializer(abilities, many=True)
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_ability(request, ability_name):
+    if request.method == 'GET':
+        try:
+            ability = Ability.objects.get(ability_name=ability_name)
+        except Ability.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = AbilitySerializer(ability)
+        return Response(serializer.data)
