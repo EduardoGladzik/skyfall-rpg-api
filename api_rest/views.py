@@ -5,8 +5,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Ability
+from .models.ability import Ability
 from .serializers import AbilitySerializer
+from .models.spells import Spell
+from .serializers import SpellSerializer
 
 import json
 
@@ -16,33 +18,46 @@ def get_abilities(request):
     Returns a list of all abilities. 
     '''
     if request.method == 'GET':
-        abilities = Ability.objects.all()
-        serializer = AbilitySerializer(abilities, many=True)
-        return Response(serializer.data)
+        list = []
+        if Ability.objects.exists():
+            for ability in Ability.objects.all():
+                if not ability.descriptors.__contains__('Mágico'):
+                    list.append(ability)
+        ability_serializer = AbilitySerializer(list, many=True)
+        spell_serializer = SpellSerializer(Spell.objects.all(), many=True)
+
+
+        return Response(ability_serializer.data + spell_serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def get_ability(request, ability_name):
+def get_ability(request, name):
     '''
     Returns a serialized object of the requested ability. 
     '''
     if request.method == 'GET':
         try:
-            ability = Ability.objects.get(pk=ability_name)
+            ability = Ability.objects.get(pk=name)
         except Ability.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        serializer = AbilitySerializer(ability)
+        
+        if ability.descriptors.__contains__('Mágico'):
+            ability = Spell.objects.get(pk=name)
+            serializer = SpellSerializer(ability)
+        else:
+            serializer = AbilitySerializer(ability)
+
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
-def update_ability(request, ability_name):
+def update_ability(request, name):
     '''
     Updates an ability searching by url.
     '''
     if request.method == 'PUT':
         try:
-            ability = Ability.objects.get(pk=ability_name)
+            ability = Ability.objects.get(pk=name)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
@@ -53,16 +68,14 @@ def update_ability(request, ability_name):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
-
-
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def ability_manager(request):
     if request.method == 'GET':
         try:
             if request.GET['ability']:    
-                ability_name = request.GET['ability']
+                name = request.GET['ability']
                 try:
-                    ability = Ability.objects.get(pk=ability_name)
+                    ability = Ability.objects.get(pk=name)
                 except Ability.DoesNotExist:
                     return Response(status=status.HTTP_404_NOT_FOUND)
                 serializer = AbilitySerializer(ability)
@@ -73,18 +86,22 @@ def ability_manager(request):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'POST':
-        new_ability = request.data
-        serializer = AbilitySerializer(data=new_ability)
+        new_entry = request.data
+        if new_entry.data.contains('components'):
+            serializer = SpellSerializer(data=new_entry)
+        else:
+            serializer = AbilitySerializer(data=new_entry)
+        
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     if request.method == 'PUT':
-        ability_name = request.data['ability_name']
+        name = request.data['name']
 
         try:
-            updated_ability = Ability.objects.get(pk=ability_name)
+            updated_ability = Ability.objects.get(pk=name)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
@@ -97,8 +114,8 @@ def ability_manager(request):
 
     if request.method == 'DELETE':
         try:
-            ability_to_delete = Ability.objects.get(pk=request.data['ability_name'])
-            ability_to_delete.delete()
+            to_delete = Ability.objects.get(pk=request.data['name'])
+            to_delete.delete()
             return Response(status=status.HTTP_202_ACCEPTED)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)

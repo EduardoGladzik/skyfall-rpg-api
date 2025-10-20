@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path('habilidades', views.get_abilities),
-    path('habilidade:<str:ability_name>', views.get_ability),
-    path('update:<str:ability_name>', views.update_ability),
-    path('api', views.ability_manager),
+    path('habilidade:<str:name>', views.get_ability),
+    path('update:<str:name>', views.update_ability),
+    path('api/', views.ability_manager),
 ]
