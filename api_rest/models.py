@@ -21,4 +21,6 @@ class Ability(models.Model):
     ability_special = models.TextField(default='')
 
     # Adicionar modificações
-
+    
+    def __str__(self):
+        return f"{self.ability_name} {self.ability_cost} PE"
