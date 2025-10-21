@@ -50,24 +50,6 @@ def get_ability(request, name):
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['PUT'])
-def update_ability(request, name):
-    '''
-    Updates an ability searching by url.
-    '''
-    if request.method == 'PUT':
-        try:
-            ability = Ability.objects.get(pk=name)
-        except:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = AbilitySerializer(ability, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    return Response(status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 def ability_manager(request):
     if request.method == 'GET':
@@ -87,7 +69,7 @@ def ability_manager(request):
 
     if request.method == 'POST':
         new_entry = request.data
-        if new_entry.data.contains('components'):
+        if new_entry.keys().__contains__('components'):
             serializer = SpellSerializer(data=new_entry)
         else:
             serializer = AbilitySerializer(data=new_entry)
