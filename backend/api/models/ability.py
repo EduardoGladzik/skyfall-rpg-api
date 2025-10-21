@@ -13,7 +13,7 @@ class Ability(models.Model):
     target = models.CharField(max_length=50, default='')
     duration = models.TextChoices('Instantânea', 'Concentração')
     attack = models.CharField(max_length=50, default='')
-    trigger = models.CharField(max_length=50, default='')
+    trigger = models.CharField(max_length=50, default='') #tornar opcional
 
     hit = models.TextField(default='')
     miss = models.TextField(default='')
