@@ -1,2 +1,3 @@
-from .ability import Ability
-from .spells import Spell
+from .models import Ability
+from .models import Spell
+from .models import Descriptor

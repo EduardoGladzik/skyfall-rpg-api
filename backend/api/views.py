@@ -5,10 +5,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models.ability import Ability
+from .models.models import Ability
 from .serializers import AbilitySerializer
-from .models.spells import Spell
+from .models.models import Spell
 from .serializers import SpellSerializer
+from .serializers import DescriptorSerializer
 
 import json
 
@@ -16,18 +17,10 @@ import json
 def get_abilities(request):
     '''
     Returns a list of all abilities. 
-    '''
+    ''' 
     if request.method == 'GET':
-        list = []
-        if Ability.objects.exists():
-            for ability in Ability.objects.all():
-                if not ability.descriptors.__contains__('Mágico'):
-                    list.append(ability)
-        ability_serializer = AbilitySerializer(list, many=True)
-        spell_serializer = SpellSerializer(Spell.objects.all(), many=True)
-
-
-        return Response(ability_serializer.data + spell_serializer.data)
+        ability_serializer = AbilitySerializer(Ability.objects.all().select_related('spell'), many=True)
+        return Response(ability_serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
@@ -41,7 +34,7 @@ def get_ability(request, name):
         except Ability.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
-        if ability.descriptors.__contains__('Mágico'):
+        if ability.__class__ == Spell:
             ability = Spell.objects.get(pk=name)
             serializer = SpellSerializer(ability)
         else:
@@ -69,8 +62,10 @@ def ability_manager(request):
 
     if request.method == 'POST':
         new_entry = request.data
-        if new_entry.keys().__contains__('components'):
+        if new_entry.keys().__contains__('layers'):
             serializer = SpellSerializer(data=new_entry)
+        elif new_entry.keys().__contains__('descriptor'):
+            serializer = DescriptorSerializer(data=new_entry)
         else:
             serializer = AbilitySerializer(data=new_entry)
         
