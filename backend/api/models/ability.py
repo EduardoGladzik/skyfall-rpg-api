@@ -20,17 +20,26 @@ class Ability(models.Model):
         ('Concentração', 'Concentração'),
     ]
 
+    ATTACK_OPTIONS = [
+        ('Força', 'FOR'),
+        ('Destreza', 'DES'),
+        ('Constituição', 'CON'),
+        ('Inteligência', 'INT'),
+        ('Sabedoria', 'SAB'),
+        ('Carisma', 'CAR'),
+    ]
+
     source = models.CharField(max_length=50, choices=SOURCE_OPTIONS, default='Livro Básico',)
     execution_type = models.CharField(max_length=20, choices=EXECUTION_OPTIONS, default='Ação')
     name = models.CharField(primary_key=True, max_length=50, default='')
     cost = models.SmallIntegerField(default=0)
-    descriptors = models.CharField(max_length=50, default='')
+    descriptors = models.ManyToManyField('Descriptor', related_name='abilities')
     description = models.TextField(default='', null=True, blank=True)
 
     range = models.SmallIntegerField(default=0)
     target = models.CharField(max_length=50, default='')
     duration = models.CharField(max_length=20, choices=DURATION_OPTIONS, default='Instantânea')
-    attack = models.CharField(max_length=50, default='', null=True, blank=True)
+    attack = models.CharField(max_length=50, choices=ATTACK_OPTIONS, default='FOR', null=True, blank=True)
     trigger = models.CharField(max_length=50, default='', null=True, blank=True)
 
     hit = models.TextField(default='', null=True, blank=True)
@@ -40,5 +49,13 @@ class Ability(models.Model):
 
     # Adicionar modificações
     
-def __str__():
-    return f"{Ability.name} {Ability.cost} PE"
+    def __str__(self):
+        return self.name
+
+
+class Descriptor(models.Model):
+    name = models.CharField(primary_key=True, max_length=50, default='')
+    description = models.TextField(default='')
+
+    def __str__(self):
+        return f"{self.name}"
