@@ -33,7 +33,7 @@ class Ability(models.Model):
     execution_type = models.CharField(max_length=20, choices=EXECUTION_OPTIONS, default='Ação')
     name = models.CharField(primary_key=True, max_length=50, default='')
     cost = models.SmallIntegerField(default=0)
-    descriptors = models.ManyToManyField('Descriptor', related_name='abilities')
+    descriptors = models.ManyToManyField('Descriptor', related_name='descriptors')
     description = models.TextField(default='', null=True, blank=True)
 
     range = models.SmallIntegerField(default=0)
@@ -74,11 +74,15 @@ class Spell(Ability):
 
     def __str__(self):
         return self.name
+    
+    def is_spell(object):
+        if object.__contains__('layer'):
+            return True
 
 
 class Descriptor(models.Model):
-    descriptor = models.CharField(primary_key=True, max_length=50, default='')
+    name = models.CharField(primary_key=True, max_length=50, default='')
     description = models.TextField(default='')
 
     def __str__(self):
-        return self.descriptor
+        return self.name
