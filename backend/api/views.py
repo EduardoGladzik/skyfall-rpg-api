@@ -9,6 +9,7 @@ from .models.models import Ability
 from .serializers import AbilitySerializer
 from .models.models import Spell
 from .serializers import SpellSerializer
+from .models.models import Descriptor
 from .serializers import DescriptorSerializer
 
 import json
@@ -29,17 +30,17 @@ def get_ability(request, name):
     Returns a serialized object of the requested ability. 
     '''
     if request.method == 'GET':
-        try:
-            ability = Ability.objects.get(pk=name)
-        except Ability.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        
-        if ability.__class__ == Spell:
-            ability = Spell.objects.get(pk=name)
-            serializer = SpellSerializer(ability)
+        object = request.data
+        if object.__contains__('descriptor'):
+            object = Descriptor.objects.get(pk=name)
+            serializer = DescriptorSerializer(object)
+        elif object.__contains__('layers'):
+            object = Spell.objects.get(pk=name)
+            serializer = SpellSerializer(object)
         else:
-            serializer = AbilitySerializer(ability)
-
+            object = Ability.objects.get(pk=name)
+            serializer = AbilitySerializer(object)
+        
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
