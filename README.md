@@ -1,6 +1,6 @@
 # Skyfall RPG API
 
-This is an API designed to manage various elements for the Brazilian TTRPG, *Skyfall*. Initially, it will handle Abilities, Spells, and Descriptors.
+This is an API designed to consult various elements of the Brazilian TTRPG, *Skyfall*. Initially, it will handle only Abilities, Spells, and Descriptors.
 
 ---
 
@@ -18,18 +18,17 @@ When the project is finished, you will be able to filter Abilities and Spells by
 
 The system is currently capable of:
 
-* **GET:** Fetching all 'Ability' and 'Spell' objects, with data returned from their respective serializers.
-* **POST:** Creating 'Ability', 'Spell', and 'Descriptor' objects, correctly differentiating between them.
-* **DELETE:** Deleting any object.
+* **GET:** Fetching all 'Ability', 'Spell' and 'Descriptor' objects, with data returned from their respective serializers.
+* **GET (by NAME):** Fetching a single 'Ability', 'Spell', or 'Descriptor' object via its URL (`api/object:<name>`).
 
 ---
 
-## Work in Progress (Broken Features)
+## Testing purposes functionalities
 
-The following functionalities are implemented but are not yet working correctly:
-
-* **GET (by ID):** Fetching a single 'Ability', 'Spell', or 'Descriptor' object via its URL (e.g., `/habilidade:<name>`).
+The following functionalities are implemented only for testing purposes and will be soon removed:
 * **PUT:** Correctly updating 'Ability' and 'Spell' objects while differentiating between their types.
+* **POST:** Creating 'Ability', 'Spell', and 'Descriptor' objects, correctly differentiating between them.
+* **DELETE:** Deleting any object.
 
 ---
 
