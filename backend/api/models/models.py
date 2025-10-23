@@ -73,7 +73,7 @@ class Spell(Ability):
     components = models.CharField(max_length=20, default='')
 
     def __str__(self):
-        return f"{self.name}"
+        return self.name
 
 
 class Descriptor(models.Model):
@@ -81,4 +81,4 @@ class Descriptor(models.Model):
     description = models.TextField(default='')
 
     def __str__(self):
-        return f"{self.name}"
+        return self.descriptor
