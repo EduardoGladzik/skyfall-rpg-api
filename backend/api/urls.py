@@ -9,5 +9,4 @@ urlpatterns = [
     path('magia:<str:name>', views.get_ability),
     path('descritores', views.get_descriptors),
     path('descritor:<str:name>', views.get_descriptor),
-    path('habilidades/controlador', views.ability_manager) # Temporary path for testing ability creation
 ]
