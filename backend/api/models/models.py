@@ -17,6 +17,13 @@ class Ability(models.Model):
 
     DURATION_OPTIONS = [
         ('Instantânea', 'Instantânea'),
+        ('Uma cena (Concentração)', 'Uma cena (Concentração)'),
+        ('Uma cena', 'Uma cena'),
+        ('Até o final do próximo descanso', 'Até o final do próximo descanso'),
+        ('Até o final do próximo descanso longo', 'Até o final do próximo descanso longo'),
+        ('Até o final do turno', 'Até o final do turno'),
+        ('8 horas', '8 horas'),
+        ('24 horas', '24 horas'),
         ('Concentração', 'Concentração'),
     ]
 
@@ -46,7 +53,7 @@ class Ability(models.Model):
     miss = models.TextField(default='', null=True, blank=True)
     effect = models.TextField(default='')
     special = models.TextField(default='', null=True, blank=True)
-
+    modifications = models.ManyToManyField('Modifications', related_name='ability_modifications', blank=True)
     # Adicionar modificações
     
     def __str__(self):
@@ -70,7 +77,7 @@ class Spell(Ability):
 
     category = models.CharField(max_length=20, choices=CATEGORY_OPTIONS, default='Controle')
     layer = models.CharField(max_length=20, choices=LAYER_OPTIONS, default='Truque')
-    components = models.CharField(max_length=20, default='')
+    components = models.ManyToManyField('Component', related_name='components')
 
     def __str__(self):
         return self.name
@@ -81,6 +88,39 @@ class Spell(Ability):
 
 
 class Descriptor(models.Model):
+    
+    CATEGORY_OPTIONS = [
+        ('Origem', 'Origem'),
+        ('Categoria', 'Categoria'),
+        ('Equipamento', 'Equipamento'),
+        ('Dano', 'Dano'),
+        ('Diversos', 'Diversos'),
+    ]
+
+    name = models.CharField(primary_key=True, max_length=50, default='', upper=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_OPTIONS, default='')
+    description = models.TextField(default='')
+
+    def __str__(self):
+        return self.name
+
+class Component(models.Model):
+    
+    name = models.CharField(primary_key=True, max_length=1, default='')
+    description = models.TextField(default='')
+
+    def __str__(self):
+        return self.name
+    
+class Modifications(models.Model):
+    ability = models.ForeignKey(Ability, on_delete=models.CASCADE, related_name='modification_ability')
+    type = models.ManyToManyField('ModificationType', related_name='modification_types')
+    description = models.TextField(default='')
+
+    def __str__(self):
+        return f"Modification for {self.ability.name}"
+    
+class ModificationType(models.Model):
     name = models.CharField(primary_key=True, max_length=50, default='')
     description = models.TextField(default='')
 
