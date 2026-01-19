@@ -45,7 +45,7 @@ class Ability(models.Model):
 
     range = models.SmallIntegerField(default=0)
     target = models.CharField(max_length=50, default='')
-    duration = models.CharField(max_length=20, choices=DURATION_OPTIONS, default='Instantânea')
+    duration = models.CharField(max_length=50, choices=DURATION_OPTIONS, default='Instantânea')
     attack = models.CharField(max_length=50, choices=ATTACK_OPTIONS, default='FOR', null=True, blank=True)
     trigger = models.CharField(max_length=50, default='', null=True, blank=True)
 
@@ -97,7 +97,7 @@ class Descriptor(models.Model):
         ('Diversos', 'Diversos'),
     ]
 
-    name = models.CharField(primary_key=True, max_length=50, default='', upper=True)
+    name = models.CharField(primary_key=True, max_length=50, default='')
     category = models.CharField(max_length=20, choices=CATEGORY_OPTIONS, default='')
     description = models.TextField(default='')
 
