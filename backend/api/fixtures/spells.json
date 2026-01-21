@@ -3,28 +3,20 @@
     "model": "api.spell",
     "pk": "Abraço da Noite",
     "fields": {
-      "source": 0,
+      "source": "Livro Básico",
       "cost": 0,
       "category": "Controle",
       "layer": "Superficial",
-      "descriptors": [
-        "TRUQUE",
-        "CONTROLE",
-        "MÁGICO"
-      ],
-      "description": "Você invoca poderes da noite e das sombras criando um vínculo entre a criatura afetada e a escuridão.",
+      "descriptors": ["Truque", "Controle", "Mágico"],
+      "description": "...",
       "range": 0,
       "target": "uma criatura",
-      "duration": 1,
-      "components": [
-        "V",
-        "S",
-        "M"
-      ],
+      "duration": "Uma cena",
+      "components": ["V", "S", "M"],
       "attack": null,
       "hit": null,
-      "effect": "a criatura afetada recebe vantagem em testes de DES relacionado à furtividade pela duração da magia.",
-      "execution_type": 0,
+      "effect": "...",
+      "execution_type": "Ação",
       "modifications": [],
       "miss": null,
       "special": null
