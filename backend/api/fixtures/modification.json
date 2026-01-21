@@ -1,0 +1,13 @@
+[
+    {
+        "model": "api.modification",
+        "pk": 0,
+        "fields": {
+            "ability": "Abraço da Noite",
+            "type": [
+                "muda" 
+            ],
+            "description": "Duração: uma cena"
+        }
+    }
+]

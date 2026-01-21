@@ -1,0 +1,514 @@
+[
+  {
+    "model": "api.descriptor",
+    "pk": "Antecedente",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Legado",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Maldição",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Classe",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Trilha",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Truque",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem de camada de magia ou truque."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Superficial",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem de camada de magia ou truque."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Rasa",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem de camada de magia ou truque."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Profunda",
+    "fields": {
+      "category": 0,
+      "description": "Descritor de origem de camada de magia ou truque."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Controle",
+    "fields": {
+      "category": 1,
+      "description": "Descritor de categoria."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Ofensiva",
+    "fields": {
+      "category": 1,
+      "description": "Descritor de categoria."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Utilitária",
+    "fields": {
+      "category": 1,
+      "description": "Descritor de categoria."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Ataque",
+    "fields": {
+      "category": 1,
+      "description": "Descritor de categoria."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Alongada",
+    "fields": {
+      "category": 2,
+      "description": "alcança um espaço adicional (geralmente de adjacente para 1,5 m a mais)."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Arremessável",
+    "fields": {
+      "category": 2,
+      "description": "esse descritor faz com que ATAQUES a distância possam usar FOR para ataque e dano. Elas são arremessadas e caem no mesmo espaço do alvo. O alcance do ataque está descrito na própria arma. Caso uma arma receba esse descritor por outro meio, ela tem 9 m de alcance."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Barulhenta",
+    "fields": {
+      "category": 2,
+      "description": "enquanto for empunhado ou vestido, esse equipamento concede desvantagem em todos os testes que envolvam Furtividade."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Composto",
+    "fields": {
+      "category": 2,
+      "description": "\"Ataques à Distância\" realizados com essa arma permitem que você aplique sua FOR às jogadas de dano."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Disparável",
+    "fields": {
+      "category": 2,
+      "description": "esse descritor faz com que ATAQUES a distância usem munição, que é perdida depois do ATAQUE. Esta arma usa o valor de DES em vez de FOR para calcular ataque e dano. O alcance do ataque está descrito na própria arma. Caso uma arma receba esse descritor por outro meio, ela tem 9 m de alcance."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Dupla",
+    "fields": {
+      "category": 2,
+      "description": "você pode “Atacar com Duas Armas” para atacar com o outro lado da arma, como se estivesse empunhando duas armas."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Eficiente",
+    "fields": {
+      "category": 2,
+      "description": "você recebe vantagem no teste da perícia indicada enquanto empunhar a arma."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Elixir",
+    "fields": {
+      "category": 2,
+      "description": "representa um preparo alquímico que pode ser consumido para fazer efeito especial."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Espalhafatosa",
+    "fields": {
+      "category": 2,
+      "description": "essa arma faz com que seus ataques afetem até duas criaturas adjacentes ao alvo original do ATAQUE."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Granada",
+    "fields": {
+      "category": 2,
+      "description": "objeto que pode ser arremessado e que causa efeito na criatura que acertar ou espaço que cair."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Leve",
+    "fields": {
+      "category": 2,
+      "description": "uma arma ou habilidade com esse descritor pode utilizar DES em vez de FOR em testes de ataque e dano."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Letal",
+    "fields": {
+      "category": 2,
+      "description": "ao ter um acerto crítico com essa arma, você causa um dado de dano adicional (além de dobrar os dados)."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Montada",
+    "fields": {
+      "category": 2,
+      "description": "feita para ser utilizada por combatentes montados. Personagens montadas que atacarem com essa arma causam +1d6 de dano."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Pesada",
+    "fields": {
+      "category": 2,
+      "description": "precisa de grande força física para ser utilizada corretamente. Algumas habilidades fazem referência a armas pesadas."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Potentes",
+    "fields": {
+      "category": 2,
+      "description": "uma arma ou poder com esse descritor realiza ataques de FOR contra CON do alvo, ao invés de DES."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Preciso",
+    "fields": {
+      "category": 2,
+      "description": "o atacante recebe +2 em jogadas de ataque com a arma caso não tenha se movido antes de atacar."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Quebradiço",
+    "fields": {
+      "category": 2,
+      "description": "o objeto está quebrando. Se for uma arma, quebra quando o atacante tiver uma falha crítica ou acerto crítico. Se for uma armadura ou escudo, tem sua redução reduzida em 1 e quebra quando um atacante conseguir um sucesso crítico."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Recarregável",
+    "fields": {
+      "category": 2,
+      "description": "esse descritor faz com que ATAQUES a distância usem munição e precisem ser recarregados depois de alguns usos por meio de uma ação específica. O número diz a quantidade de disparos que podem ser feitos seguido pelo ícone da ação necessária: uma arma recarregável (3 A) precisa ser recarregada com uma ação depois de 3 disparos, por exemplo."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Retornável",
+    "fields": {
+      "category": 2,
+      "description": "a arma retorna para a mão de seu dono no final do turno em que foi arremessada. Condições | 500 Condições e descritores"
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Superior",
+    "fields": {
+      "category": 2,
+      "description": "o atacante é considerado expert em testes de “Ataque de Superioridade”."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Versátil",
+    "fields": {
+      "category": 2,
+      "description": "uma arma de uma mão com esta habilidade pode ser usada com as duas mãos para aumentar seu dano (em parênteses). Descritores de Dano Todo dano causado no jogo é dano de algum tipo e isso faz com que a magia ou habilidade também receba o descritor apropriado. Já apresentamos esses descritores no Capítulo 1, mas para facilitar a consulta nós colocamos eles aqui novamente. São eles:"
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Ácido",
+    "fields": {
+      "category": 3,
+      "description": "vômitos de criaturas grotescas, substâncias corrosivas e dano relacionado com demônios e diabretes. Dano relacionado com o elemento Terra."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Contundente",
+    "fields": {
+      "category": 3,
+      "description": "ataques de força e impacto — martelos, quedas, constrição e similares — causam dano contundente."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Cortante",
+    "fields": {
+      "category": 3,
+      "description": "armas (naturais ou não) e objetos cortantes causam esse tipo de dano."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Elétrico",
+    "fields": {
+      "category": 3,
+      "description": "descargas elétricas de objetos magitec, efeitos mágicos ou habilidades de monstros. Relacionado com o elemento Ar."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Energético",
+    "fields": {
+      "category": 3,
+      "description": "dano de magia pura, geralmente associado como uma manifestação do Arcanum, deixando rastros mágicos evidentes."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Gélido",
+    "fields": {
+      "category": 3,
+      "description": "efeitos naturais de frio extremo, habilidades de criaturas ou magias podem causar dano desse tipo. Relacionado com elemento Água."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Ígneo",
+    "fields": {
+      "category": 3,
+      "description": "dano causado por chamas, sejam elas naturais ou mágicas. Relacionado com elemento Fogo."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Necrótico",
+    "fields": {
+      "category": 3,
+      "description": "esse tipo de dano está relacionado com a remoção da essência vital de matéria viva."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Perfurante",
+    "fields": {
+      "category": 3,
+      "description": "ataques com objetos pontudos, como lanças e mordidas de monstros, causam dano perfurante."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Psíquico",
+    "fields": {
+      "category": 3,
+      "description": "habilidades que afetam diretamente a mente e embaralham sentidos causam dano psíquico."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Radiante",
+    "fields": {
+      "category": 3,
+      "description": "energia relacionada com as Deusas e os Titãs, podendo ser manifestada por devotos ou seraphs."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Trovejante",
+    "fields": {
+      "category": 3,
+      "description": "todo efeito explosivo relacionado com ondas sonoras causa dano desse tipo."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Venenoso",
+    "fields": {
+      "category": 3,
+      "description": "a mordida venenosa de uma cobra ou uma toxina poderosa causam dano desse tipo."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Especial",
+    "fields": {
+      "category": 3,
+      "description": "essa categoria abarca todos os danos de outros tipos que não podem ser reduzidos normalmente, como dano relativo a cansaço, afogamento ou até mesmo fome. Ignora redução. Descritores Diversos Por fim, temos a categoria de descritores diversos. Esses descritores aparecem no final da lista. Alguns servem apenas para identificar características de habilidades ou magias enquanto outros podem apresentar mecânicas específicas. Por hora, vamos apresentar somente os descritores dessa categoria que possuem mecânicas próprias."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Alquímico",
+    "fields": {
+      "category": 4,
+      "description": "habilidades, magias ou itens que combinam elementos mágicos, químicos e de engenharia para fabricação de granadas e elixires."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Aspecto",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que alteram seu estado físico. Você só pode ter uma alteração de ASPECTO por vez. Sempre que você for alterado por outra habilidade ou magia com esse descritor, você termina o efeito da habilidade ou magia anterior."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Aura",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que criam um efeito mágico à sua volta. Geralmente, auras precisam de condições especiais para continuarem ativas. Sempre que você manifestar uma aura por outra 501 | Apêndice apêndice habilidade ou magia com esse descritor, você termina o efeito da habilidade ou magia anterior."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Criação",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias com esse descritor criam um objeto ou criatura mágica. Essa criação dura até final da cena (ou de acordo com a descrição da habilidade ou magia). Uma criação possui uma quantidade de cargas de vida igual ao bônus de proficiência de seu criador. Sempre que for sofrer dano, ela perde uma carga de vida. Se chegar a 0 cargas ou menos, ela é destruída. Considera-se que a criação usa os valores de proteção de seu criador. Se ela puder atacar, considera-se que é o criador que está atacando com um Ataque Mágico."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Cura",
+    "fields": {
+      "category": 4,
+      "description": "habilidades e efeitos que recuperam pontos de vida. Algumas características, habilidades ou magias podem aumentar ou reduzir essa quantidade."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Divina",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que utilizam poder de Deusas ou Titãs. Algumas características como resistências podem fazer referência a esse descritor."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Elemental",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias com efeitos relacionados com um ou mais elementos e seus danos relacionados. São eles: Água (GÉLIDO), Ar (ELÉTRICO), Fogo (ÍGNEO) e Terra (ÁCIDO)."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Encantamento",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que afetam a mente do alvo tentando alterar suas percepções sobre você. Geralmente, relacionado com a condição Encantado."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Ilusão",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou efeitos que criam imagens ou sons ilusórios, afetando os sentidos."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Inspiração",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias capazes de fazer com que a criatura afetada fique tomada por uma força maior, recebendo a condição Inspirado. Você só pode ter uma alteração de INSPIRAÇÃO por vez. Sempre que você for alterado por outra habilidade ou magia com esse descritor, você termina o efeito da habilidade ou magia anterior."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Mágico",
+    "fields": {
+      "category": 4,
+      "description": "habilidades consideradas mágicas. Algumas características como resistências podem fazer referência a esse descritor. Naturalmente, magias e truques mágicos carregam esse descritor em sua camada."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Medo",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que tentam impor medo no alvo, geralmente deixando-o Amedrontado ou outra condição similar."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Montaria",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que só podem ser usadas enquanto você está montado em outra criatura."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Movimento",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que afetam diretamente seu deslocamento. Características e habilidades podem referenciar esse descritor aumentando ou reduzindo a movimentação."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Suporte",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias que afetam outras criaturas e concedem benefícios (geralmente mágicos). Características e habilidades podem referenciar esse descritor, aumentando duração ou concedendo benefícios adicionais."
+    }
+  },
+  {
+    "model": "api.descriptor",
+    "pk": "Voz",
+    "fields": {
+      "category": 4,
+      "description": "habilidades ou magias diretamente relacionadas com sua potência vocal. Você não pode usar essa habilidade ou magia caso esteja impossibilitado de falar. Criaturas que não falam podem utilizar esse descritor através de outros mecanismos, mas devem determinar também como ficam impossibilitados de utilizá-lo."
+    }
+  }
+]

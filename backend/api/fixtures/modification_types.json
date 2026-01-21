@@ -1,0 +1,30 @@
+[
+    {
+        "model": "api.modificationtype",
+        "pk": "muda",
+        "fields": {
+            "description": "Altera alguma característica sobre a habilidade."
+        }
+    },
+    {
+        "model": "api.modificationtype",
+        "pk": "adiciona",
+        "fields": {
+            "description": "Adiciona alguma característica à habilidade."
+        }
+    },
+    {
+        "model": "api.modificationtype",
+        "pk": "remove",
+        "fields": {
+            "description": "Remove alguma característica da habilidade."
+        }
+    },
+    {
+        "model": "api.modificationtype",
+        "pk": "ampliar",
+        "fields": {
+            "description": "Adiciona ou altera uma característica a uma habilidade caso o jogador role um número maior ou igual ao indicado na modificação."
+        }
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "model": "api.component",
+        "pk": "V",
+        "fields": {
+            "description": "Componente verbal"
+        }
+    },
+    {
+        "model": "api.component",
+        "pk": "S",
+        "fields": {
+            "description": "Componente somático"
+        }
+    },
+    {
+        "model": "api.component",
+        "pk": "M",
+        "fields": {
+            "description": "Componente material"
+        }
+    }
+]
