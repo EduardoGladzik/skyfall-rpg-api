@@ -1,6 +1,7 @@
 from django.db import models
 
-class Ability(models.Model):
+class BaseAbility(models.Model):
+    """Classe abstrata com campos comuns para Ability e Spell"""
 
     SOURCE_OPTIONS = [
         ('Livro Básico', 'Livro Básico'),
@@ -40,7 +41,7 @@ class Ability(models.Model):
     execution_type = models.CharField(max_length=20, choices=EXECUTION_OPTIONS, default='Ação')
     name = models.CharField(primary_key=True, max_length=50, default='')
     cost = models.SmallIntegerField(default=0)
-    descriptors = models.ManyToManyField('Descriptor', related_name='descriptors')
+    descriptors = models.ManyToManyField('Descriptor', related_name='%(class)s_descriptors')
     description = models.TextField(default='', null=True, blank=True)
 
     range = models.SmallIntegerField(default=0)
@@ -53,14 +54,33 @@ class Ability(models.Model):
     miss = models.TextField(default='', null=True, blank=True)
     effect = models.TextField(default='')
     special = models.TextField(default='', null=True, blank=True)
-    modifications = models.ManyToManyField('Modifications', related_name='ability_modifications', blank=True)
-    # Adicionar modificações
+    modifications = models.ManyToManyField('Modification', related_name='%(class)s_modifications', blank=True)
+    
+    class Meta:
+        abstract = True
     
     def __str__(self):
         return self.name
 
 
-class Spell(Ability):
+class ModificationType(models.Model):
+    name = models.CharField(primary_key=True, max_length=50, default='')
+    description = models.TextField(default='')
+
+    def __str__(self):
+        return self.name
+
+class Ability(BaseAbility):
+    """Habilidades gerais da aplicação"""
+    
+    class Meta:
+        db_table = 'api_ability'
+    
+    def __str__(self):
+        return self.name
+
+
+class Spell(BaseAbility):
 
     CATEGORY_OPTIONS = [
         ('Controle', 'Controle'),
@@ -79,13 +99,11 @@ class Spell(Ability):
     layer = models.CharField(max_length=20, choices=LAYER_OPTIONS, default='Truque')
     components = models.ManyToManyField('Component', related_name='components')
 
+    class Meta:
+        db_table = 'api_spell'
+
     def __str__(self):
         return self.name
-    
-    def is_spell(object):
-        if object.__contains__('layer'):
-            return True
-
 
 class Descriptor(models.Model):
     
@@ -105,24 +123,17 @@ class Descriptor(models.Model):
         return self.name
 
 class Component(models.Model):
-    
     name = models.CharField(primary_key=True, max_length=1, default='')
     description = models.TextField(default='')
 
     def __str__(self):
         return self.name
     
-class Modifications(models.Model):
-    ability = models.ForeignKey(Ability, on_delete=models.CASCADE, related_name='modification_ability')
+class Modification(models.Model):
+    id = models.AutoField(primary_key=True)
+    cost = models.SmallIntegerField(default=0)
     type = models.ManyToManyField('ModificationType', related_name='modification_types')
     description = models.TextField(default='')
 
     def __str__(self):
-        return f"Modification for {self.ability.name}"
-    
-class ModificationType(models.Model):
-    name = models.CharField(primary_key=True, max_length=50, default='')
-    description = models.TextField(default='')
-
-    def __str__(self):
-        return self.name
+        return f"Modification: {self.description[:50]}"
