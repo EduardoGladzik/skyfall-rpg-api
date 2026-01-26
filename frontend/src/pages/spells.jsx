@@ -1,19 +1,7 @@
-import React from 'react';
-import Header from '../components/Header';
-import Filter from '../components/Filter';
-import List from '../components/List';
+import React from "react";
 
-const Spells = () => {
-    const handleFilter = (filters) => {
-    };
-
-    return (
-        <div className="spells-page">
-            <Header />
-            <Filter onFilter={handleFilter} />
-            <List />
-        </div>
-    );
-};
+const Spells = [{
+  },
+]
 
 export default Spells;
