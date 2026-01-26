@@ -7,15 +7,6 @@ class AbilitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Ability
         fields = '__all__'
-    
-    def to_representation(self, instance):
-        if isinstance(instance, Spell):
-            return SpellSerializer(instance).data
-
-        spell_obj = getattr(instance, 'spell', None)
-        if spell_obj is not None:
-            return SpellSerializer(spell_obj).data
-        return super().to_representation(instance)
 
 
 class SpellSerializer(serializers.ModelSerializer):

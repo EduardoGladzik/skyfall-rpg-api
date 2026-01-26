@@ -48,6 +48,17 @@ def get_spells(request):
 
 
 @api_view(['GET'])
+def get_spell(request):
+    '''
+    Returns a serialized object of the requested spell. 
+    ''' 
+    if request.method == 'GET':
+        serializer = SpellSerializer(Spell.objects.get(name=request.query_params.get('name')))
+        return Response(serializer.data)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
 def get_descriptors(request):
     '''
     Returns a list of all descriptors. 

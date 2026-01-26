@@ -1,7 +1,6 @@
 from django.db import models
 
 class BaseAbility(models.Model):
-    """Classe abstrata com campos comuns para Ability e Spell"""
 
     SOURCE_OPTIONS = [
         ('Livro Básico', 'Livro Básico'),
@@ -39,7 +38,7 @@ class BaseAbility(models.Model):
 
     source = models.CharField(max_length=50, choices=SOURCE_OPTIONS, default='Livro Básico',)
     execution_type = models.CharField(max_length=20, choices=EXECUTION_OPTIONS, default='Ação')
-    name = models.CharField(primary_key=True, max_length=50, default='')
+    name = models.CharField(max_length=50, default='')
     cost = models.SmallIntegerField(default=0)
     descriptors = models.ManyToManyField('Descriptor', related_name='%(class)s_descriptors')
     description = models.TextField(default='', null=True, blank=True)
@@ -63,16 +62,7 @@ class BaseAbility(models.Model):
         return self.name
 
 
-class ModificationType(models.Model):
-    name = models.CharField(primary_key=True, max_length=50, default='')
-    description = models.TextField(default='')
-
-    def __str__(self):
-        return self.name
-
 class Ability(BaseAbility):
-    """Habilidades gerais da aplicação"""
-    
     class Meta:
         db_table = 'api_ability'
     
@@ -123,7 +113,14 @@ class Descriptor(models.Model):
         return self.name
 
 class Component(models.Model):
-    name = models.CharField(primary_key=True, max_length=1, default='')
+    
+    NAME_OPTIONS = [
+        ('V', 'Verbal'),
+        ('S', 'Somático'),
+        ('M', 'Material'),
+    ]
+    
+    name = models.CharField(primary_key=True, max_length=10, choices=NAME_OPTIONS, default='')
     description = models.TextField(default='')
 
     def __str__(self):
@@ -137,3 +134,19 @@ class Modification(models.Model):
 
     def __str__(self):
         return f"Modification: {self.description[:50]}"
+    
+
+class ModificationType(models.Model):
+    
+    TYPE_OPTIONS = [
+        ('Adiciona', 'Adiciona'),
+        ('Muda', 'Muda'),
+        ('Ampliar', 'Ampliar'),
+        ('Remove', 'Remove'),
+    ]
+    
+    name = models.CharField(max_length=50, choices=TYPE_OPTIONS, default='')
+    description = models.TextField(default='')
+
+    def __str__(self):
+        return self.name

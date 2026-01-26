@@ -4,9 +4,9 @@ from . import views
 
 urlpatterns = [
     path('habilidades', views.get_abilities),
-    path('habilidade:<str:name>', views.get_ability),
+    path('habilidades/<str:name>', views.get_ability),
     path('magias', views.get_spells),
-    path('magia:<str:name>', views.get_ability),
+    path('magias/<str:name>', views.get_spell),
     path('descritores', views.get_descriptors),
-    path('descritor:<str:name>', views.get_descriptor),
+    path('descritores/<str:name>', views.get_descriptor),
 ]
