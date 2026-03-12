@@ -38,7 +38,7 @@ class BaseAbility(models.Model):
 
     source = models.CharField(max_length=50, choices=SOURCE_OPTIONS, default='Livro Básico',)
     execution_type = models.CharField(max_length=20, choices=EXECUTION_OPTIONS, default='Ação')
-    name = models.CharField(max_length=50, default='')
+    name = models.CharField(max_length=50, unique=True, default='')
     cost = models.SmallIntegerField(default=0)
     descriptors = models.ManyToManyField('Descriptor', related_name='%(class)s_descriptors')
     description = models.TextField(default='', null=True, blank=True)
@@ -105,7 +105,7 @@ class Descriptor(models.Model):
         ('Diversos', 'Diversos'),
     ]
 
-    name = models.CharField(primary_key=True, max_length=50, default='')
+    name = models.CharField(unique=True, max_length=50, default='')
     category = models.CharField(max_length=20, choices=CATEGORY_OPTIONS, default='')
     description = models.TextField(default='')
 
@@ -120,7 +120,7 @@ class Component(models.Model):
         ('M', 'Material'),
     ]
     
-    name = models.CharField(primary_key=True, max_length=10, choices=NAME_OPTIONS, default='')
+    name = models.CharField(unique=True, max_length=10, choices=NAME_OPTIONS, default='')
     description = models.TextField(default='')
 
     def __str__(self):

@@ -31,7 +31,7 @@ def get_ability(request, name):
     Returns a serialized object of the requested ability. 
     '''
     if request.method == 'GET':
-        serializer = AbilitySerializer(Ability.objects.get(pk=name))
+        serializer = AbilitySerializer(Ability.objects.get(name=name))
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -48,12 +48,12 @@ def get_spells(request):
 
 
 @api_view(['GET'])
-def get_spell(request):
+def get_spell(request, name):
     '''
     Returns a serialized object of the requested spell. 
     ''' 
     if request.method == 'GET':
-        serializer = SpellSerializer(Spell.objects.get(name=request.query_params.get('name')))
+        serializer = SpellSerializer(Spell.objects.get(name=name))
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -75,6 +75,6 @@ def get_descriptor(request, name):
     Returns a serialized object of the requested descriptor. 
     '''
     if request.method == 'GET':
-        serializer = DescriptorSerializer(Descriptor.objects.get(pk=name))
+        serializer = DescriptorSerializer(Descriptor.objects.get(name=name))
         return Response(serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
