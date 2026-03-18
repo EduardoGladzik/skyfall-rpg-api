@@ -122,6 +122,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_URL = [
+    BASE_DIR.parent / "frontend" / "src" / "assets",
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -132,3 +138,45 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # Porta padrão do Vite
     "http://localhost:3000", # Porta padrão do React
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": None,
+    "site_header": "Skyfall API",
+    "site_brand": "Skyfall RPG",
+    "site_logo": "logo.png",
+    
+    "welcome_sign": "Bem-vindo ao painel de administração do Skyfall RPG!",
+    "copyright": "Skyfall RPG © 2026",
+    
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "api.spell": "fas fa-magic",
+        "api.ability": "fas fa-fist-raised",
+        "api.descriptor": "fas fa-tags",
+        "api.component": "fas fa-cubes",
+        "api.modificationType": "fas fa-wrench",
+        "api.modification": "fas fa-tools",
+    },
+    
+    "order_with_respect_to": ["api", "auth"],
+}
+
+JAZZMIN_UI_TWEAKS = {
+
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+
+    "navbar": "navbar-dark",
+    "theme": "darkly",
+    "accent": "accent-primary",
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "sidebar_nav_child_indent": True,
+
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_legacy_inline": False,
+    "sidebar_nav_flat_style": False,
+}
