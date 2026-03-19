@@ -127,7 +127,6 @@ class Component(models.Model):
         return self.name
     
 class Modification(models.Model):
-    id = models.AutoField(primary_key=True)
     cost = models.SmallIntegerField(default=0)
     type = models.ManyToManyField('ModificationType', related_name='modification_types')
     description = models.TextField(default='')
