@@ -122,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_URL = [
+STATICFILES_DIRS = [
     BASE_DIR.parent / "frontend" / "src" / "assets",
 ]
 
@@ -163,20 +163,6 @@ JAZZMIN_SETTINGS = {
 }
 
 JAZZMIN_UI_TWEAKS = {
-
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": False,
-    "brand_small_text": False,
-
-    "navbar": "navbar-dark",
-    "theme": "darkly",
-    "accent": "accent-primary",
-    "navbar_fixed": True,
-    "layout_boxed": False,
-    "sidebar_nav_child_indent": True,
-
-    "sidebar": "sidebar-dark-primary",
-    "sidebar_nav_legacy_inline": False,
-    "sidebar_nav_flat_style": False,
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
 }
