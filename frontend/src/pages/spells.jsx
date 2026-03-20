@@ -1,56 +1,30 @@
 import { useEffect, useState } from 'react';
+import logoImg from '../assets/logo.png';
 
 function SpellsPage() {
-    // 1. Criamos a "memória" para as magias. Começa como uma lista vazia [].
     const [spells, setSpells] = useState([]);
-    
-    // 2. Criamos um estado para saber se a API ainda está processando.
     const [loading, setLoading] = useState(true);
-
-    // 3. O "Gatilho" que roda quando a página abre.
-    useEffect(() => {
-        // Função assíncrona para buscar os dados
-        const fetchSpells = async () => {
-            try {
-                const response = await fetch('http://localhost:8000/api/spells/');
-                const data = await response.json();
-                
-                // Guardamos o resultado do Django na nossa memória 'spells'
-                setSpells(data);
-                setLoading(false);
-            } catch (error) {
-                console.error("Erro ao buscar magias:", error);
-                setLoading(false);
-            }
-        };
-
-        fetchSpells();
-    }, []); // Este [] vazio garante que a busca só ocorra UMA vez.
-
-    // 4. Lógica de exibição (O que o usuário vê)
-    if (loading) return <p>Carregando...</p>;
+    const [error, setError] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     return (
-        <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-            <h1>Catálogo de Magias - Skyfall</h1>
-            
-            <div style={{ display: 'grid', gap: '20px' }}>
-                {spells.map((spell) => (
-                    <div key={spell.id} style={{
-                        border: '1px solid #ddd',
-                        padding: '15px',
-                        borderRadius: '8px',
-                        backgroundColor: '#f9f9f9'
-                    }}>
-                        <h2 style={{ color: '#2c3e50' }}>{spell.name}</h2>
-                        <p><strong>Custo:</strong> {spell.cost} PM</p>
-                        <p><strong>Execução:</strong> {spell.execution_type}</p>
-                        <p>{spell.description}</p>
-                    </div>
-                ))}
-            </div>
+        <div className="min-h-screen bg-[#0f111a] text-gray-200 font sans">
+            {/* Navbar */}
+            <nav className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex justify-between items-center">
+                {/* Título e Logo */}
+                <div className="flex items-center gap-3">
+                    <img src={logoImg} alt="Logo" className="h-8 object-contain" />
+                    <span className="text-xl font-bold text-purple-400 tracking-wider">Skyfall RPG API</span>
+                </div>
+                {/* Links de Navegação */}
+                <div className='hidden md:flex gap-6 text-sm font-medium text-gray-400'>
+                    <a href="#" className="hover:text-purple-400 transition-colors">Magias</a>
+                    <a href="#" className="hover:text-purple-400 transition-colors duration-300">Classes</a>
+                    <a href="#" className="hover:text-purple-400 transition-colors duration-300">Trilhas</a>
+                    <a href="#" className="hover:text-purple-400 transition-colors duration-300">Legados</a>
+                </div>
+            </nav>
         </div>
-    );
+    )
 }
-
 export default SpellsPage;
